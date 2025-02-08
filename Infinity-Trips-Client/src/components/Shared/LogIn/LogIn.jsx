@@ -3,13 +3,38 @@ import { DiGithubBadge } from "react-icons/di";
 import { RiTwitterXLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 const LogIn = () => {
+  const { logInWithEmail, logInWithGoogle } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
 
   const handleLogIn = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // LogIn with email and password
+    logInWithEmail(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  //LogIn With Google
+  const handleLogInWithGoogle = () => {
+    logInWithGoogle()
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (
@@ -90,7 +115,7 @@ const LogIn = () => {
               <div className='flex gap-3'>
                 {/* Login with google */}
                 <button
-                //   onClick={() => handleLoginWithGoogle()}
+                  onClick={handleLogInWithGoogle}
                   className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
                 >
                   <FcGoogle className='text-xl' />
@@ -98,7 +123,7 @@ const LogIn = () => {
 
                 {/* Login with Github */}
                 <button
-                //   onClick={() => handleLogInGitHub()}
+                  //   onClick={() => handleLogInGitHub()}
                   className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
                 >
                   <DiGithubBadge className='text-2xl' />
@@ -106,7 +131,7 @@ const LogIn = () => {
 
                 {/* Login with X or Twitter */}
                 <button
-                //   onClick={() => handleLogInWithFacebook()}
+                  //   onClick={() => handleLogInWithFacebook()}
                   className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
                 >
                   <RiTwitterXLine className='text-2xl' />

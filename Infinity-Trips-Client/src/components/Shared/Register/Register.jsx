@@ -4,18 +4,43 @@ import { FaFacebook } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 const Register = () => {
+  const { createUser, logInWithGoogle } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const name = form.get("name");
-    const email = form.get("email");
-    const password = form.get("password");
-    console.log(name, email, password);
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photoURL = form.photoURL.value;
+    const password = form.password.value;
+    const user = { name, email, photoURL, password };
+    console.log(user);
+
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+        form.reset();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
+
+  const handleRegisterWithGoogle = () =>{
+    // Register With Google
+    logInWithGoogle()
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
 
   return (
     <div className='flex flex-col my-8'>
@@ -73,7 +98,7 @@ const Register = () => {
               <input
                 className=' w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm'
                 type='url'
-                name='photoUrl'
+                name='photoURL'
                 required
                 placeholder='Enter your photo URL'
               />
@@ -160,7 +185,7 @@ const Register = () => {
               <div className='flex gap-3'>
                 {/* Login with google */}
                 <button
-                  //   onClick={() => handleLoginWithGoogle()}
+                    onClick={handleRegisterWithGoogle}
                   className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
                 >
                   <FcGoogle className='text-xl' />

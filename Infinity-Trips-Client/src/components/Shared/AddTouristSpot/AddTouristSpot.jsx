@@ -1,8 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
-import { DiGithubBadge } from "react-icons/di";
-import { RiTwitterXLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
-
 const AddTouristSpot = () => {
   const handleAddTouristSpot = (e) => {
     e.preventDefault();
@@ -224,51 +219,6 @@ const AddTouristSpot = () => {
           </button>
         </div>
       </form>
-      <div className='flex items-center justify-center mt-6'>
-        <p className='text-sm text-gray-500'>
-          Don&apos;t have an account?
-          <Link
-            to='/register'
-            className='text-red-500 font-medium ml-1 hover:underline'
-          >
-            Register
-          </Link>
-        </p>
-      </div>
-
-      {/* Other Login Options */}
-      <div>
-        <p className='flex justify-center text-xs text-slate-500 mt-5'>
-          Or Login with
-        </p>
-        <div>
-          <div className='flex gap-3'>
-            {/* Login with google */}
-            <button
-              //   onClick={() => handleLoginWithGoogle()}
-              className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
-            >
-              <FcGoogle className='text-xl' />
-            </button>
-
-            {/* Login with Github */}
-            <button
-              //   onClick={() => handleLogInGitHub()}
-              className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
-            >
-              <DiGithubBadge className='text-2xl' />
-            </button>
-
-            {/* Login with X or Twitter */}
-            <button
-              //   onClick={() => handleLogInWithFacebook()}
-              className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
-            >
-              <RiTwitterXLine className='text-2xl' />
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
