@@ -1,0 +1,73 @@
+.button-explore {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    border-radius: 10px;
+    font-size: 1.25em;
+    cursor: pointer;
+  }
+  
+  .button-explore span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .button-explore::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: #272727;
+    border-radius: 9px;
+    transition: 0.5s;
+  }
+  
+  .button-login:hover::before {
+    opacity: 0.7;
+  }
+  
+  .button-explore::after {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    border-radius: 9px;
+    transition: 0.5s;
+    opacity: 0;
+    filter: blur(20px);
+  }
+  
+  .button-explore:hover:after {
+    opacity: 1;
+  }
+  
+
+ @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(0.95);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+}
+  
+  
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+  }

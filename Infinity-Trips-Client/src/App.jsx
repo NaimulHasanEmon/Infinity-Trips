@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      <p className='text-3xl'>Infinity Trips</p>
+      <p className='text-3xl'>Welcome to the Infinity Trips!</p>
     </>
   )
 }

@@ -1,0 +1,72 @@
+[
+    {
+      "id": "301",
+      "image": "https://example.com/bali.jpg",
+      "tourists_spot_name": "Bali",
+      "country_name": "Indonesia",
+      "location": "Lesser Sunda Islands",
+      "short_description": "A tropical paradise known for its beaches, temples, and vibrant culture.",
+      "average_cost": 900,
+      "seasonality": "Year-round",
+      "travel_time": "7 days",
+      "totalVisitorsPerYear": 6000000,
+      "user_email": "user11@example.com",
+      "user_name": "Kevin Malone"
+    },
+    {
+      "id": "302",
+      "image": "https://example.com/borobudur.jpg",
+      "tourists_spot_name": "Borobudur Temple",
+      "country_name": "Indonesia",
+      "location": "Central Java",
+      "short_description": "Largest Buddhist temple in the world, built in the 9th century.",
+      "average_cost": 300,
+      "seasonality": "Year-round",
+      "travel_time": "3 days",
+      "totalVisitorsPerYear": 2500000,
+      "user_email": "user12@example.com",
+      "user_name": "Oscar Martinez"
+    },
+    {
+      "id": "303",
+      "image": "https://example.com/komodo.jpg",
+      "tourists_spot_name": "Komodo National Park",
+      "country_name": "Indonesia",
+      "location": "Lesser Sunda Islands",
+      "short_description": "Home to the Komodo dragon and stunning marine biodiversity.",
+      "average_cost": 600,
+      "seasonality": "Dry Season",
+      "travel_time": "5 days",
+      "totalVisitorsPerYear": 100000,
+      "user_email": "user13@example.com",
+      "user_name": "Stanley Hudson"
+    },
+    {
+      "id": "304",
+      "image": "https://example.com/raja-ampat.jpg",
+      "tourists_spot_name": "Raja Ampat Islands",
+      "country_name": "Indonesia",
+      "location": "West Papua",
+      "short_description": "A remote archipelago with some of the world's best diving spots.",
+      "average_cost": 1000,
+      "seasonality": "Dry Season",
+      "travel_time": "7 days",
+      "totalVisitorsPerYear": 50000,
+      "user_email": "user14@example.com",
+      "user_name": "Phyllis Vance"
+    },
+    {
+      "id": "305",
+      "image": "https://example.com/yogyakarta.jpg",
+      "tourists_spot_name": "Yogyakarta",
+      "country_name": "Indonesia",
+      "location": "Java",
+      "short_description": "A cultural hub with ancient temples, traditional arts, and cuisine.",
+      "average_cost": 400,
+      "seasonality": "Year-round",
+      "travel_time": "4 days",
+      "totalVisitorsPerYear": 3000000,
+      "user_email": "user15@example.com",
+      "user_name": "Ryan Howard"
+    }
+  ]

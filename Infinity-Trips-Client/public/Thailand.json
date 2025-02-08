@@ -1,0 +1,72 @@
+[
+    {
+      "id": "201",
+      "image": "https://example.com/bangkok.jpg",
+      "tourists_spot_name": "Bangkok",
+      "country_name": "Thailand",
+      "location": "Central Thailand",
+      "short_description": "The bustling capital city known for its street life, temples, and nightlife.",
+      "average_cost": 600,
+      "seasonality": "Year-round",
+      "travel_time": "5 days",
+      "totalVisitorsPerYear": 22000000,
+      "user_email": "user6@example.com",
+      "user_name": "Michael Scott"
+    },
+    {
+      "id": "202",
+      "image": "https://example.com/chiang-mai.jpg",
+      "tourists_spot_name": "Chiang Mai",
+      "country_name": "Thailand",
+      "location": "Northern Thailand",
+      "short_description": "A cultural hub with ancient temples, mountains, and festivals.",
+      "average_cost": 500,
+      "seasonality": "Winter",
+      "travel_time": "4 days",
+      "totalVisitorsPerYear": 10000000,
+      "user_email": "user7@example.com",
+      "user_name": "Pam Beesly"
+    },
+    {
+      "id": "203",
+      "image": "https://example.com/ayutthaya.jpg",
+      "tourists_spot_name": "Ayutthaya",
+      "country_name": "Thailand",
+      "location": "Central Thailand",
+      "short_description": "A historical city with ancient ruins and temples.",
+      "average_cost": 400,
+      "seasonality": "Year-round",
+      "travel_time": "3 days",
+      "totalVisitorsPerYear": 5000000,
+      "user_email": "user8@example.com",
+      "user_name": "Dwight Schrute"
+    },
+    {
+      "id": "204",
+      "image": "https://example.com/phuket.jpg",
+      "tourists_spot_name": "Phuket",
+      "country_name": "Thailand",
+      "location": "Southern Thailand",
+      "short_description": "A tropical paradise with beaches, nightlife, and luxury resorts.",
+      "average_cost": 700,
+      "seasonality": "Winter",
+      "travel_time": "7 days",
+      "totalVisitorsPerYear": 15000000,
+      "user_email": "user9@example.com",
+      "user_name": "Jim Halpert"
+    },
+    {
+      "id": "205",
+      "image": "https://example.com/phi-phi.jpg",
+      "tourists_spot_name": "Phi Phi Islands",
+      "country_name": "Thailand",
+      "location": "Krabi Province",
+      "short_description": "Stunning islands with crystal-clear waters and limestone cliffs.",
+      "average_cost": 800,
+      "seasonality": "Summer",
+      "travel_time": "7 days",
+      "totalVisitorsPerYear": 1500000,
+      "user_email": "user10@example.com",
+      "user_name": "Angela Martin"
+    }
+  ]
