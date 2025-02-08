@@ -6,6 +6,7 @@ import MyList from "../src/components/Shared/MyList/MyList";
 import LogIn from "../src/components/Shared/LogIn/LogIn";
 import Register from "../src/components/Shared/Register/Register";
 import Home from "../src/components/Shared/Home/Home";
+import PrivateRouter from "./PrivateRouter/PrivateRouter";
 
 const Routes = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch('Country.json'),
+        loader: () => fetch("Country.json"),
         element: <Home></Home>,
       },
       {
@@ -27,7 +28,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/myList",
-        element: <MyList></MyList>,
+        element: (
+          <PrivateRouter>
+            <MyList></MyList>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/login",

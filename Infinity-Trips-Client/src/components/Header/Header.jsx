@@ -41,11 +41,13 @@ const Header = () => {
           Add Tourists Spot
         </NavLink>
       </li>
-      <li>
-        <NavLink to='/myList' className='hover:text-teal-500 hover:bg-white'>
-          My List
-        </NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to='/myList' className='hover:text-teal-500 hover:bg-white'>
+            My List
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
