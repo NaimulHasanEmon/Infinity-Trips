@@ -49,14 +49,12 @@ const Slider = ({ countryData }) => {
               <div className='relative'>
                 <Link
                   to={`/spot/${data.id}`}
-                  className='pl-2 sm:pl-4 text-sm sm:text-base xl:text-base button-exploreMore w-32 sm:w-40 md:w-48 lg:w-48 xl:w-72 flex items-center gap-2 hover:transition-all hover:duration-300 hover:translate-x-1 hover:-translate-y-1 ease-in-out'
+                  className='button-explore pl-2 sm:pl-4 text-sm sm:text-base xl:text-base w-32 sm:w-40 xl:w-45 flex items-center py-2 px-3 gap-2 hover:transition-all hover:duration-300 hover:translate-x-1 hover:-translate-y-1 ease-in-out'
                 >
-                  <button className='button-explore flex items-center py-2 px-3 gap-2'>
-                    <span className=''>Explore More</span>
-                    <span className='text-teal-600'>
-                      <FaLocationArrow />
-                    </span>
-                  </button>
+                  <span className=''>Explore More</span>
+                  <span className='text-teal-600'>
+                    <FaLocationArrow />
+                  </span>
                 </Link>
               </div>
             </div>

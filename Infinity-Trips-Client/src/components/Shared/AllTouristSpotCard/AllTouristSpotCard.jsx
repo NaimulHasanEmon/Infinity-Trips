@@ -15,10 +15,11 @@ const AllTouristSpotCard = ({ spot }) => {
     imageURL,
   } = spot;
   return (
-    <div className='border border-base-200 p-2 rounded-2xl shadow-xl'>
+    
+    <div className='border border-base-200 flex flex-col p-2 rounded-2xl shadow-xl'>
       <div className='mx-auto'>
         <img
-          className='h-40 rounded-lg w-full object-cover'
+          className='rounded-t-lg w-screen h-55 object-cover'
           src={imageURL}
           alt={touristSpotName}
         />
@@ -553,6 +554,7 @@ const AllTouristSpotCard = ({ spot }) => {
           {totalVisitorsPerYear}/year
         </p>
       </div>
+      <div className='grow'></div>
       <div className='mt-2'>
         <Link to='/login'>
           <button className='button-card-explore w-full pb-2 pt-1 px-5'>
