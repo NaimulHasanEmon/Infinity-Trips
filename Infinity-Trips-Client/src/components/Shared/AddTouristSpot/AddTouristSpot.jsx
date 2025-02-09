@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddTouristSpot = () => {
   const handleAddTouristSpot = (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ const AddTouristSpot = () => {
     const userEmail = form.userEmail.value;
     const userName = form.userName.value;
     const imageURL = form.imageURL.value;
-    const touristInfo = {
+    const spotInfo = {
       touristSpotName,
       countryName,
       location,
@@ -26,7 +28,28 @@ const AddTouristSpot = () => {
       userName,
       imageURL,
     };
-    console.log(touristInfo);
+    console.log(spotInfo);
+
+    fetch("http://localhost:5000/spots", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(spotInfo),
+    })
+      .then((res) => {
+        console.log(res);
+        res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          title: "Spot Added",
+          text: "Your added spot will be added to the database.",
+          icon: "success",
+        });
+        form.reset();
+      });
   };
 
   return (

@@ -33,14 +33,16 @@ const Header = () => {
           All Tourist Spot
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to='/addTouristSpot'
-          className='hover:text-teal-500 hover:bg-white'
-        >
-          Add Tourists Spot
-        </NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink
+            to='/addTouristSpot'
+            className='hover:text-teal-500 hover:bg-white'
+          >
+            Add Tourists Spot
+          </NavLink>
+        </li>
+      )}
       {user && (
         <li>
           <NavLink to='/myList' className='hover:text-teal-500 hover:bg-white'>

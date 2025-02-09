@@ -1,9 +1,16 @@
 const express = require("express");
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require('mongodb');
+require("dotenv").config();
+const {
+  MongoClient,
+  ServerApiVersion,
+  CancellationToken,
+  ObjectId,
+} = require("mongodb");
 const app = express();
 const port = process.env.PORT || 5000;
 
+// middleware
 app.use(cors());
 app.use(express.json());
 
@@ -16,16 +23,36 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
 });
 
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
+
+    const spotsCollection = client.db("infinityTripsDB").collection("Spots");
+
+    // Create
+    app.post("/spots", async (req, res) => {
+      const newSpot = req.body;
+      console.log(newSpot);
+      const result = await spotsCollection.insertOne(newSpot);
+      res.send(result);
+    });
+
+    // Read
+    app.get("/spots", async (req, res) => {
+      const cursor = spotsCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    console.log(
+      "Pinged your deployment. You successfully connected to MongoDB!"
+    );
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
