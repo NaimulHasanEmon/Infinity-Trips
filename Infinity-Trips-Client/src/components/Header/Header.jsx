@@ -6,7 +6,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  const logo = "https://i.ibb.co.com/2069S7d2/26.png";
+  const logo = "https://i.ibb.co.com/rR9jQN5Y/Infinity-Trips-Logo.png";
 
   const handleLogOut = () => {
     logOut()
@@ -85,11 +85,6 @@ const Header = () => {
             <div className='w-20 hidden md:flex'>
               <Link to='/'>
                 <img src={logo} alt='Logo' />
-              </Link>
-            </div>
-            <div>
-              <Link to='/' className='text-2xl uppercase font-bold'>
-                Infinity Trips
               </Link>
             </div>
           </div>
