@@ -43,6 +43,8 @@ const VideDetailsPage = () => {
 
   const [coordinates, setCoordinates] = useState(null);
 
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
   useEffect(() => {
     if (location) {
       getCoordinates(location).then((coords) => {
@@ -623,7 +625,7 @@ const VideDetailsPage = () => {
                     ></iframe>
                   </div>
                 ) : (
-                    <Loader></Loader>
+                  <Loader></Loader>
                 )}
               </div>
             </div>
