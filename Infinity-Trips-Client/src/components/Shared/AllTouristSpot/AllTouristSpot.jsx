@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const AllTouristSpot = () => {
   const loadedSpots = useLoaderData();
-  // console.log(loadedSpots);
   const [spots, setSpots] = useState(loadedSpots);
 
   const handleLowToHigh = () => {
