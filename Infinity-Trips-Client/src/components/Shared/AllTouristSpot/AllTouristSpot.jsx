@@ -1,14 +1,26 @@
 import { useLoaderData } from "react-router-dom";
 import AllTouristSpotCard from "../AllTouristSpotCard/AllTouristSpotCard";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useState } from "react";
 
 const AllTouristSpot = () => {
   const loadedSpots = useLoaderData();
-  console.log(loadedSpots);
+  // console.log(loadedSpots);
+  const [spots, setSpots] = useState(loadedSpots);
 
-  const handleLowToHigh = () => {};
+  const handleLowToHigh = () => {
+    const sortedSpots = [...spots].sort(
+      (a, b) => a.averageCost - b.averageCost
+    );
+    setSpots(sortedSpots);
+  };
 
-  const handleHighToLow = () => {};
+  const handleHighToLow = () => {
+    const sortedSpots = [...spots].sort(
+      (a, b) => b.averageCost - a.averageCost
+    );
+    setSpots(sortedSpots);
+  };
 
   return (
     <div className='mb-10'>
@@ -44,7 +56,7 @@ const AllTouristSpot = () => {
         </div>
         {/* Spot Cart */}
         <div className='grid md:grid-cols-3 xl:grid-cols-4 gap-5 justify-center'>
-          {loadedSpots.map((spot) => (
+          {spots.map((spot) => (
             <AllTouristSpotCard key={spot.id} spot={spot}></AllTouristSpotCard>
           ))}
         </div>

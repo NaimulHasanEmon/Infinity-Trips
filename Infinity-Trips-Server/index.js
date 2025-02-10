@@ -4,8 +4,6 @@ require("dotenv").config();
 const {
   MongoClient,
   ServerApiVersion,
-  CancellationToken,
-  ObjectId,
 } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 5000;
