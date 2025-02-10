@@ -6,7 +6,7 @@ import "./AllTouristSpotCard.css";
 
 const AllTouristSpotCard = ({ spot }) => {
   const {
-    // _id,
+    _id,
     touristSpotName,
     averageCost,
     seasonality,
@@ -15,7 +15,6 @@ const AllTouristSpotCard = ({ spot }) => {
     imageURL,
   } = spot;
   return (
-    
     <div className='border border-base-200 flex flex-col p-2 rounded-2xl shadow-xl'>
       <div className='mx-auto'>
         <img
@@ -554,9 +553,11 @@ const AllTouristSpotCard = ({ spot }) => {
           {totalVisitorsPerYear}/year
         </p>
       </div>
+      {/* For growing the gap of explore more button */}
       <div className='grow'></div>
+      {/* Explore More */}
       <div className='mt-2'>
-        <Link to='/login'>
+        <Link to={`/viewDetails/${_id}`}>
           <button className='button-card-explore w-full pb-2 pt-1 px-5'>
             <span>Explore More</span>
           </button>

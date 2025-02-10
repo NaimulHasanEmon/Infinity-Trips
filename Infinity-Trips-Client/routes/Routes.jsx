@@ -7,6 +7,7 @@ import LogIn from "../src/components/Shared/LogIn/LogIn";
 import Register from "../src/components/Shared/Register/Register";
 import Home from "../src/components/Shared/Home/Home";
 import PrivateRouter from "./PrivateRouter/PrivateRouter";
+import ViewDetailsPage from "../src/components/Shared/VideDetailsPage/VideDetailsPage";
 
 const Routes = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("Country.json"),
+        loader: () => fetch("/Country.json").then((res) => res.json()),
         element: <Home></Home>,
       },
       {
@@ -46,6 +47,12 @@ const Routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/viewDetails/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/spots/${params.id}`),
+        element: <ViewDetailsPage></ViewDetailsPage>,
       },
     ],
   },

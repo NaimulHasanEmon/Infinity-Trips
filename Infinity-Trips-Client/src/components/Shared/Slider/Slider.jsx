@@ -18,7 +18,7 @@ const Slider = ({ countryData }) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [countryData.length]);
+  }, [countryData]);
 
   return (
     <div className='relative px-1'>
@@ -66,14 +66,7 @@ const Slider = ({ countryData }) => {
 };
 
 Slider.propTypes = {
-  countryData: PropTypes.arrayOf(
-    PropTypes.shape({
-      slider_image: PropTypes.string.isRequired,
-      estate_title: PropTypes.string.isRequired,
-      slider_info: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  countryData: PropTypes.array.isRequired,
 };
 
 export default Slider;
