@@ -16,7 +16,7 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("/Country.json").then((res) => res.json()),
+        loader: () => fetch('http://localhost:5000/spots'),
         element: <Home></Home>,
       },
       {

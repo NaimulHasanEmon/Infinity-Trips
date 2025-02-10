@@ -9,21 +9,21 @@ import "./Slider.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
-const Slider = ({ countryData }) => {
+const Slider = ({ slideData, length }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % countryData.length);
+      setCurrentSlide((prev) => (prev + 1) % length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [countryData]);
+  }, [length]);
 
   return (
     <div className='relative px-1'>
       <AutoplaySlider
-        className='h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[610px]'
+        className='h-[300px] sm:h-[400px] md:h-[500px] lg:h-[450px] 2xl:h-[623px]'
         play={true}
         interval={5000} // Interval between slides
         infinite={true}
@@ -31,25 +31,28 @@ const Slider = ({ countryData }) => {
         // buttons={false} // Add this line to remove the arrows
         onTransitionEnd={(event) => setCurrentSlide(event.currentIndex)}
       >
-        {countryData.map((data, idx) => (
-          <div key={idx}>
+        {slideData.map((data, idx) => (
+          <div
+            key={idx}
+            className='h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px]'
+          >
             <img
-              src={data.image}
-              className='h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] contrast-150 opacity-60 w-full object-cover'
-              alt={data.country_name}
+              src={data.imageURL}
+              className='h-full contrast-150 opacity-60 w-screen object-cover'
+              alt={data.countryName}
             />
             <div
-              className={`absolute bottom-5 left-3 md:bottom-10 md:left-10 lg:bottom-20 lg:left-20 xl:bottom-20 xl:left-20 2xl:bottom-20 2xl:left-20 text-white z-50 pr-10 sm:pr-20 md:pr-70 lg:pr-[500px] xl:pr-[500px] 2xl:pr-[500px] ${
+              className={`absolute bottom-5 left-3 md:bottom-10 md:left-10 lg:left-20 text-white z-50 pr-10 sm:pr-20 md:pr-70 lg:pr-[500px] xl:pr-[500px] 2xl:pr-[500px] ${
                 currentSlide === idx ? "animate-slide-up" : ""
               }`}
             >
-              <p className='text-2xl md:text-3xl lg:text-4xl xl:text-9xl slide-info-bold slider-text'>
-                {data.country_name}
+              <p className='text-2xl md:text-3xl lg:text-8xl xl:text-9xl slide-info-bold slider-text'>
+                {data.countryName}
               </p>
               <div className='relative'>
                 <Link
-                  to={`/spot/${data.id}`}
-                  className='button-explore pl-2 sm:pl-4 text-sm sm:text-base xl:text-base w-32 sm:w-40 xl:w-45 flex items-center py-2 px-3 gap-2 hover:transition-all hover:duration-300 hover:translate-x-1 hover:-translate-y-1 ease-in-out'
+                  to={`/viewDetails/${data._id}`}
+                  className='button-explore pl-2 sm:pl-4 text-sm sm:text-base xl:text-base w-32 sm:w-45 xl:w-45 flex items-center py-2 px-3 gap-2 hover:transition-all hover:duration-300 hover:translate-x-1 hover:-translate-y-1 ease-in-out'
                 >
                   <span className=''>Explore More</span>
                   <span className='text-teal-600'>
@@ -66,7 +69,13 @@ const Slider = ({ countryData }) => {
 };
 
 Slider.propTypes = {
-  countryData: PropTypes.array.isRequired,
+  slideData: PropTypes.arrayOf(
+    PropTypes.shape({
+      imageURL: PropTypes.string.isRequired,
+      countryName: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  length: PropTypes.number.isRequired,
 };
 
 export default Slider;

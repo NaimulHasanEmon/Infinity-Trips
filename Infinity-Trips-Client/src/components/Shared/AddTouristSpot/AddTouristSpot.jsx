@@ -53,7 +53,7 @@ const AddTouristSpot = () => {
   };
 
   return (
-    <div className='flex flex-col mb-10 max-w-md md:max-w-3xl mx-auto w-full bg-white shadow-xl rounded-3xl sm:p-10 p-6'>
+    <div className='flex flex-col mb-10 max-w-md md:max-w-3xl mx-auto w-full bg-white shadow-xl rounded-3xl sm:p-10 md:px-10 md:py-5'>
       <div className='text-center mb-6'>
         <p className='text-3xl font-bold'>Add Tourist Spot</p>
       </div>
@@ -129,7 +129,6 @@ const AddTouristSpot = () => {
               />
             </div>
           </div>
-
           {/* Right Side Form */}
           <div className='flex-1 space-y-4'>
             {/* Seasonality*/}

@@ -2,11 +2,12 @@ import { useLoaderData } from "react-router-dom";
 import Slider from "../Slider/Slider";
 
 const Home = () => {
-  const countryData = useLoaderData() || [];
+  const sliderData = useLoaderData() || [];
+  console.log(sliderData);
 
   return (
     <div>
-      <Slider countryData={countryData}></Slider>
+      <Slider slideData={sliderData} length={sliderData.length}></Slider>
     </div>
   );
 };
