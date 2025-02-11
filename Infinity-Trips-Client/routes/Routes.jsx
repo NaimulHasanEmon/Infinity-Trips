@@ -16,7 +16,7 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch('http://localhost:5000/spots'),
+        loader: () => fetch("http://localhost:5000/spots"),
         element: <Home></Home>,
       },
       {
@@ -34,6 +34,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/myList",
+        loader: () => fetch("http://localhost:5000/spots"),
         element: (
           <PrivateRouter>
             <MyList></MyList>

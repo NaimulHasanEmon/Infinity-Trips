@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 const AddTouristSpot = () => {
+  const { user } = useContext(AuthContext);
+  const userMail = user.email;
+
   const handleAddTouristSpot = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -27,6 +32,7 @@ const AddTouristSpot = () => {
       userEmail,
       userName,
       imageURL,
+      userMail,
     };
     console.log(spotInfo);
 
