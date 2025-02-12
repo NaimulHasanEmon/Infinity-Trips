@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../../provider/AuthProvider";
-
+import axios from "axios";
 const AddTouristSpot = () => {
   const { user } = useContext(AuthContext);
   const userMail = user.email;
@@ -36,26 +36,38 @@ const AddTouristSpot = () => {
     };
     console.log(spotInfo);
 
-    fetch("https://infinity-trips-naimulhasanemon-md-naimul-hasans-projects.vercel.app/spots", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(spotInfo),
-    })
-      .then((res) => {
-        console.log(res);
-        res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        Swal.fire({
-          title: "Spot Added",
-          text: "Your added spot will be added to the database.",
-          icon: "success",
-        });
-        form.reset();
+    // Using Axios
+    axios.post("https://infinity-trips.vercel.app/spots", spotInfo).then((data) => {
+      console.log(data.data);
+      Swal.fire({
+        title: "Spot Added",
+        text: "Your added spot will be added to the database.",
+        icon: "success",
       });
+      form.reset();
+    });
+
+    // Using Fetch API
+    // fetch("https://infinity-trips.vercel.app/spots", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(spotInfo),
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //     res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     Swal.fire({
+    //       title: "Spot Added",
+    //       text: "Your added spot will be added to the database.",
+    //       icon: "success",
+    //     });
+    //     form.reset();
+    //   });
   };
 
   return (

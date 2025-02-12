@@ -12,8 +12,6 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 const Slider = ({ slideData, length }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  console.log(slideData)
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % length);
