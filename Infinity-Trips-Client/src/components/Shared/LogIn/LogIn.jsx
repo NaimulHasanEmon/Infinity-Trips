@@ -7,7 +7,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
 
 const LogIn = () => {
-  const { logInWithEmail, logInWithGoogle } = useContext(AuthContext);
+  const { logInWithEmail, logInWithGoogle, logInWithGithub } =
+    useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
 
   const handleLogIn = (e) => {
@@ -26,9 +27,20 @@ const LogIn = () => {
       });
   };
 
-  //LogIn With Google
+  // LogIn With Google
   const handleLogInWithGoogle = () => {
     logInWithGoogle()
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  // Login With GitHub
+  const handleLogInWithGithub = () => {
+    logInWithGithub()
       .then((res) => {
         console.log(res.user);
       })
@@ -87,10 +99,10 @@ const LogIn = () => {
             </div>
             <div className='mt-6'>
               <button
-                className='w-full py-2 px-4 bg-gray-700 text-white rounded-md hover:bg-gray-600 cursor-pointer text-xl font-semibold'
+                className='w-full button-login py-2 px-4 bg-gray-700 text-white rounded-md hover:bg-gray-600 cursor-pointer text-xl font-semibold'
                 type='submit'
               >
-                Login
+                <span>Login</span>
               </button>
             </div>
           </form>
@@ -123,7 +135,7 @@ const LogIn = () => {
 
                 {/* Login with Github */}
                 <button
-                  //   onClick={() => handleLogInGitHub()}
+                  onClick={() => handleLogInWithGithub()}
                   className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
                 >
                   <DiGithubBadge className='text-2xl' />

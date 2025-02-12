@@ -10,6 +10,7 @@ import { AuthContext } from "../../../../provider/AuthProvider";
 const Register = () => {
   const { createUser, logInWithGoogle } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
+  const [registerError, setRegisterError] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -18,8 +19,28 @@ const Register = () => {
     const email = form.email.value;
     const photoURL = form.photoURL.value;
     const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
     const user = { name, email, photoURL, password };
     console.log(user);
+
+    if (password !== confirmPassword) {
+      setRegisterError("Passwords do not match");
+      return;
+    }
+
+    if (password.length < 6) {
+      setRegisterError("Password must be at least 6 characters long");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegisterError(
+        "Your Password must contain at least one uppercase letter."
+      );
+      return;
+    }
+
+    // Reset error messages
+    setRegisterError("");
 
     createUser(email, password)
       .then((res) => {
@@ -31,7 +52,7 @@ const Register = () => {
       });
   };
 
-  const handleRegisterWithGoogle = () =>{
+  const handleRegisterWithGoogle = () => {
     // Register With Google
     logInWithGoogle()
       .then((res) => {
@@ -40,7 +61,7 @@ const Register = () => {
       .catch((err) => {
         console.log(err.message);
       });
-  }
+  };
 
   return (
     <div className='flex flex-col my-8'>
@@ -99,7 +120,6 @@ const Register = () => {
                 className=' w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm'
                 type='url'
                 name='photoURL'
-                required
                 placeholder='Enter your photo URL'
               />
             </div>
@@ -119,6 +139,31 @@ const Register = () => {
                   name='password'
                   required
                   placeholder='Enter your password'
+                />
+                <span
+                  onClick={() => setShowPass(!showPass)}
+                  className='absolute top-4 right-3 cursor-pointer'
+                >
+                  {showPass ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+            </div>
+
+            {/* Confirm Password */}
+            <div className='mt-3'>
+              <label
+                className=' text-sm font-semibold text-gray-600 mt-4'
+                htmlFor='confirmPassword'
+              >
+                Confirm Password
+              </label>
+              <div className='relative'>
+                <input
+                  className=' w-full border border-gray-300 rounded-md px-3 py-2 mt-1 text-sm'
+                  type={showPass ? "text" : "password"}
+                  name='confirmPassword'
+                  required
+                  placeholder='Confirm your password'
                 />
                 <span
                   onClick={() => setShowPass(!showPass)}
@@ -152,13 +197,20 @@ const Register = () => {
               </div>
             </div>
 
+            {/* Show register errors, if any */}
+            <div>
+              {registerError && (
+                <div className='text-red-500 text-xs'>{registerError}</div>
+              )}
+            </div>
+
             {/* Register button */}
             <div className='mt-6'>
               <button
-                className='w-full py-2 px-4 bg-gray-700 text-white rounded-md hover:bg-gray-600'
+                className='w-full button-login py-2 px-4 bg-gray-700 text-white rounded-md hover:bg-gray-600'
                 type='submit'
               >
-                Register
+                <span>Register</span>
               </button>
             </div>
           </form>
@@ -185,7 +237,7 @@ const Register = () => {
               <div className='flex gap-3'>
                 {/* Login with google */}
                 <button
-                    onClick={handleRegisterWithGoogle}
+                  onClick={handleRegisterWithGoogle}
                   className='mt-2 w-full h-12 rounded-md flex justify-center items-center font-medium gap-2 border border-[#ededef] bg-white cursor-pointer transition duration-200 ease-in-out hover:border-[#2d79f3]'
                 >
                   <FcGoogle className='text-xl' />
