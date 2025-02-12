@@ -16,12 +16,12 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:5000/spots"),
+        loader: () => fetch("https://infinity-trips-naimulhasanemon-md-naimul-hasans-projects.vercel.app/spots"),
         element: <Home></Home>,
       },
       {
         path: "/allTouristSpot",
-        loader: () => fetch("http://localhost:5000/spots"),
+        loader: () => fetch("https://infinity-trips-naimulhasanemon-md-naimul-hasans-projects.vercel.app/spots"),
         element: <AllTouristSpot></AllTouristSpot>,
       },
       {
@@ -34,7 +34,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/myList",
-        loader: () => fetch("http://localhost:5000/spots"),
+        loader: () => fetch("https://infinity-trips-naimulhasanemon-md-naimul-hasans-projects.vercel.app/spots"),
         element: (
           <PrivateRouter>
             <MyList></MyList>
@@ -52,7 +52,7 @@ const Routes = createBrowserRouter([
       {
         path: "/viewDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/spots/${params.id}`),
+          fetch(`https://infinity-trips-naimulhasanemon-md-naimul-hasans-projects.vercel.app/spots/${params.id}`),
         element: <ViewDetailsPage></ViewDetailsPage>,
       },
     ],

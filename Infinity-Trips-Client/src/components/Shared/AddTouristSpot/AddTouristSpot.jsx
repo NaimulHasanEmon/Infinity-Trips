@@ -36,7 +36,7 @@ const AddTouristSpot = () => {
     };
     console.log(spotInfo);
 
-    fetch("http://localhost:5000/spots", {
+    fetch("https://infinity-trips-naimulhasanemon-md-naimul-hasans-projects.vercel.app/spots", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
